@@ -1,0 +1,1 @@
+我们的日志每小时轮转一次，整点前后的事件会被切到两个文件里，跨文件的事件链经常断。请实现检测器：① 同时读取两个文件并按时间合并，识别 DNS 隧道外传与上传后执行两类事件；② 对 labels.json 的标注全部命中，跨文件边界的良性流量零误报；③ 每条告警给出跨文件的事件序列与各自的行号；④ 拿不准的列入 needs_review 并写明缺什么；⑤ 输出 findings.json，含 rule、first_seen、last_seen、entities、evidence。
