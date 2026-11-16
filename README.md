@@ -14,7 +14,14 @@ tests/          骨架测试
 ```bash
 python -m pytest tests -q
 python detector/detector.py logs/auth.log findings.json
+# 跨轮转边界：把相邻两个小时的日志一起传入，最后一个参数是输出文件
+python detector/detector.py logs/auth.log.1 logs/auth.log findings.json
 ```
+
+检测器把所有输入文件合并到一条时间线上再做关联，跨文件的事件链不会断。
+输出 `findings.json` 含 `findings`（rule、first_seen、last_seen、entities、
+evidence——按时间排列、带文件名与行号的事件序列）与 `needs_review`
+（拿不准的项，`missing` 字段写明缺什么证据）。
 
 ## 基线状态
 
